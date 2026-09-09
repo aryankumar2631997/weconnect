@@ -1,0 +1,57 @@
+:root {
+    /* Premium, quiet palette: warm stone paper, warm near-black ink,
+       one deliberate accent (deep pine — reads as trust/verified for a
+       home-services app, not decorative). Color is spent on function
+       (actions, status, selection), not on filling backgrounds. */
+    --paper: #F6F4EE;
+    --card: #FFFFFF;
+    --ink: #1C1A17;
+    --ink-soft: #58524A;
+    --gray: #58524A;
+    --gray-light: #ECE8DF;
+
+    --accent: #1F4B43;
+    --accent-deep: #143530;
+    --accent-pale: #E4EBE7;
+
+    --line: rgba(28, 26, 23, 0.14);
+
+    --success: #1F4B43;
+    --danger: #92392C;
+    --danger-pale: #F3E4E0;
+    --whatsapp: #25D366;
+
+    /* Rozha One: a Devanagari+Latin display serif — carries the page's
+       personality for headlines, category names, and service titles.
+       Hind stays for body copy, forms, and UI chrome (bilingual, quiet). */
+    --font-display: 'Rozha One', 'Hind', serif;
+    --font-body: 'Hind', sans-serif;
+
+    --touch-target: 44px;
+    --button-height: 56px;
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+
+    /* Legacy aliases — keep admin.css working against the refined palette. */
+    --yellow: var(--accent);
+    --yellow-deep: var(--accent-deep);
+    --yellow-pale: var(--accent-pale);
+    --primary-yellow: var(--accent);
+    --primary-yellow-light: var(--accent-pale);
+    --primary-black: var(--ink);
+    --primary-white: var(--card);
+    --light-gray: var(--gray-light);
+    --medium-gray: var(--line);
+    --dark-gray: var(--ink-soft);
+    --error-red: var(--danger);
+    --success-green: var(--success);
+    --font-primary: var(--font-body);
+    --font-hindi: var(--font-body);
+}

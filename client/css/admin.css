@@ -1,0 +1,734 @@
+@import url('variables.css');
+
+/* Login */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    padding: var(--spacing-lg);
+}
+
+.login-box {
+    background: var(--card);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid var(--line);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.login-header h1 {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--ink);
+}
+
+.login-header p {
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    margin-top: var(--spacing-xs);
+}
+
+.login-box .form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.login-box input {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+}
+
+.login-box input:focus {
+    border-color: var(--accent);
+}
+
+.login-btn {
+    width: 100%;
+    padding: var(--spacing-md);
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-top: var(--spacing-md);
+}
+
+.login-btn:hover {
+    background: var(--accent-deep);
+}
+
+/* Admin Layout */
+.admin-header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: var(--spacing-md) var(--spacing-lg);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.admin-header .logo h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: var(--paper);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    font-size: 0.85rem;
+    color: rgba(246, 244, 238, 0.75);
+}
+
+.logout-btn {
+    background: transparent;
+    color: var(--paper);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(246, 244, 238, 0.3);
+    font-size: 0.875rem;
+}
+
+.logout-btn:hover {
+    background: rgba(246, 244, 238, 0.1);
+}
+
+/* Admin Nav */
+.admin-nav {
+    background: var(--card);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    display: flex;
+    gap: var(--spacing-sm);
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--ink-soft);
+    transition: all 0.2s;
+}
+
+.nav-btn:hover {
+    background: var(--gray-light);
+}
+
+.nav-btn.active {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+/* Admin Content */
+.admin-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+}
+
+.view-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.view-header h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.filters {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.filters select {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    background: var(--card);
+}
+
+.refresh-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--card);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+}
+
+.refresh-btn:hover {
+    background: var(--gray-light);
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.stat-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    text-align: left;
+}
+
+.stat-card h3 {
+    font-size: 0.7rem;
+    color: var(--ink-soft);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.stat-card p {
+    font-size: 1.75rem;
+    font-weight: 400;
+    font-family: var(--font-display);
+    color: var(--ink);
+}
+
+/* Status accents kept to a single functional signal, not a color per card. */
+.stat-card.new p { color: var(--ink); }
+.stat-card.assigned p { color: var(--accent); }
+.stat-card.completed p { color: var(--accent); }
+.stat-card.verified p { color: var(--accent); }
+
+/* Leads Table */
+.leads-table-container {
+    overflow-x: auto;
+    background: var(--card);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--line);
+}
+
+.leads-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.leads-table th {
+    background: var(--gray-light);
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-align: left;
+    font-weight: 600;
+    color: var(--ink-soft);
+    font-size: 0.75rem;
+}
+
+.leads-table td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-bottom: 1px solid var(--line);
+}
+
+.leads-table tr:hover {
+    background: var(--paper);
+}
+
+.status-badge {
+    padding: 3px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.72rem;
+    font-weight: 600;
+    display: inline-block;
+    border: 1px solid transparent;
+}
+
+/* One accent, one danger, and ink — differentiated by weight/fill rather
+   than a different hue per status. */
+.status-badge.NEW { background: var(--gray-light); color: var(--ink-soft); border-color: var(--line); }
+.status-badge.CONTACTED { background: var(--accent-pale); color: var(--accent-deep); }
+.status-badge.ASSIGNED { background: var(--accent-pale); color: var(--accent-deep); border-color: var(--accent); }
+.status-badge.ACCEPTED { background: var(--accent); color: var(--paper); }
+.status-badge.COMPLETED { background: var(--ink); color: var(--paper); }
+.status-badge.CANCELLED { background: var(--danger-pale); color: var(--danger); }
+
+.action-btns {
+    display: flex;
+    gap: var(--spacing-xs);
+    flex-wrap: wrap;
+}
+
+.action-btns button {
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    background: var(--gray-light);
+    color: var(--ink);
+    transition: background 0.2s;
+}
+
+.action-btns button:hover {
+    background: var(--line);
+}
+
+/* Providers Grid */
+.providers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.provider-card {
+    background: var(--card);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border: 1px solid var(--line);
+}
+
+.provider-card h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+}
+
+.provider-card .phone {
+    color: var(--ink-soft);
+    font-size: 0.875rem;
+}
+
+.provider-card .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin: var(--spacing-sm) 0;
+}
+
+.provider-card .tag {
+    background: var(--gray-light);
+    color: var(--ink-soft);
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.72rem;
+}
+
+.provider-card .status {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    display: inline-block;
+}
+
+.provider-card .status.verified { background: var(--accent-pale); color: var(--accent-deep); }
+.provider-card .status.pending { background: var(--gray-light); color: var(--ink-soft); }
+.provider-card .status.rejected { background: var(--danger-pale); color: var(--danger); }
+
+.add-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+}
+
+.add-btn:hover {
+    background: var(--accent-deep);
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(28, 26, 23, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: var(--spacing-md);
+}
+
+.modal-content {
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    border: 1px solid var(--line);
+}
+
+.modal-content h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.modal-close {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: var(--ink-soft);
+}
+
+.modal-content .form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.modal-content label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    background: var(--card);
+}
+
+.modal-content input:focus,
+.modal-content select:focus,
+.modal-content textarea:focus {
+    border-color: var(--accent);
+}
+
+.modal-content select[multiple] {
+    min-height: 80px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    max-height: 220px;
+    overflow-y: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-xs);
+}
+
+.checkbox-option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    min-height: var(--touch-target, 44px);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+.checkbox-option:active {
+    background: var(--gray-light);
+}
+
+.checkbox-option input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    min-height: 0;
+    flex-shrink: 0;
+    accent-color: var(--accent);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: var(--spacing-md);
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    margin-top: var(--spacing-md);
+}
+
+.submit-btn:hover {
+    background: var(--accent-deep);
+}
+
+/* Lead Detail */
+.lead-detail .lead-info p {
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.9rem;
+}
+
+.lead-actions {
+    margin-top: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.assign-section {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.assign-section h4 {
+    width: 100%;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+}
+
+.assign-section select {
+    flex: 1;
+    min-width: 150px;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--card);
+}
+
+.assign-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--accent);
+    color: var(--paper);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+}
+
+.assign-btn:hover {
+    background: var(--accent-deep);
+}
+
+.status-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.status-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--gray-light);
+    color: var(--ink);
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+.status-btn:hover {
+    background: var(--line);
+}
+
+.status-btn.danger {
+    color: var(--danger);
+}
+
+.status-btn.danger:hover {
+    background: var(--danger-pale);
+}
+
+/* Error */
+.error-message {
+    color: var(--danger);
+    padding: var(--spacing-sm);
+    margin: var(--spacing-sm) 0;
+    background: var(--danger-pale);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+}
+
+.loading {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--ink-soft);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .admin-content {
+        padding: var(--spacing-md);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .providers-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .view-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filters {
+        flex-wrap: wrap;
+    }
+
+    .modal-content {
+        padding: var(--spacing-md);
+        margin: var(--spacing-sm);
+    }
+}
+
+/* Below this width, a data table is unreadable without horizontal
+   scrolling, which is a poor experience for CS staff on a phone.
+   Collapse the leads table into stacked, labeled cards instead —
+   the data-label attributes set in admin.js drive the ::before labels. */
+@media (max-width: 700px) {
+    .leads-table-container {
+        overflow-x: visible;
+        background: none;
+        border: none;
+    }
+
+    .leads-table thead {
+        display: none;
+    }
+
+    .leads-table, .leads-table tbody, .leads-table tr, .leads-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .leads-table tr {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        margin-bottom: var(--spacing-md);
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .leads-table tr:hover {
+        background: var(--card);
+    }
+
+    .leads-table td {
+        border-bottom: 1px solid var(--line);
+        padding: var(--spacing-sm) 0;
+        font-size: 0.9rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--spacing-md);
+        text-align: right;
+    }
+
+    .leads-table td:last-child {
+        border-bottom: none;
+    }
+
+    .leads-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--ink-soft);
+        text-align: left;
+        flex-shrink: 0;
+    }
+
+    .leads-table td[data-label="Actions"] {
+        justify-content: flex-end;
+    }
+
+    .leads-table td[data-label="Actions"]::before {
+        content: none;
+    }
+}
+
+/* Real touch targets everywhere in the admin UI. 44px is the accepted
+   minimum for a control someone taps with a thumb (also required by
+   Play Store's accessibility review if this ever gets wrapped as an app). */
+.login-box input,
+.login-btn,
+.nav-btn,
+.filters select,
+.refresh-btn,
+.add-btn,
+.action-btns button,
+.provider-card button,
+.assign-section select,
+.assign-btn,
+.status-btn,
+.submit-btn,
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+    min-height: var(--touch-target, 44px);
+}
+
+.action-btns {
+    gap: var(--spacing-sm);
+}
+
+.action-btns button {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.provider-card button {
+    padding: var(--spacing-sm) var(--spacing-lg) !important;
+    font-size: 0.85rem !important;
+    background: var(--gray-light);
+    border-radius: var(--radius-sm);
+    margin-top: var(--spacing-sm);
+}
+
+.provider-card button:hover {
+    background: var(--line);
+}
+
+.modal-close {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.modal-close:hover {
+    background: var(--gray-light);
+}
+
+.status-actions .status-btn,
+.assign-section .assign-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+}
+
+/* select[multiple] on a touch screen has no way to multi-select without
+   Ctrl/Cmd, which mobile users don't have — give options real tap height. */
+.modal-content select[multiple] option {
+    padding: var(--spacing-sm);
+}

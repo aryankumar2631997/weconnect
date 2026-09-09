@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeConnect Lakhisarai - Admin</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Screen -->
+        <div id="loginScreen" class="login-container">
+            <div class="login-box">
+                <div class="login-header">
+                    <h1>WeConnect</h1>
+                    <p>Admin Dashboard</p>
+                </div>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <input type="text" id="username" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="password" placeholder="Password" required>
+                    </div>
+                    <div id="loginError" class="error-message" style="display:none;"></div>
+                    <button type="submit" class="login-btn">Login</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboardScreen" style="display:none;">
+            <header class="admin-header">
+                <div class="header-content">
+                    <div class="logo">
+                        <h1>📊 WeConnect Admin</h1>
+                    </div>
+                    <div class="header-actions">
+                        <span id="adminUser">Admin</span>
+                        <button id="logoutBtn" class="logout-btn">Logout</button>
+                    </div>
+                </div>
+            </header>
+
+            <nav class="admin-nav">
+                <button class="nav-btn active" data-view="leads">📋 Leads</button>
+                <button class="nav-btn" data-view="providers">👤 Providers</button>
+                <button class="nav-btn" data-view="stats">📈 Stats</button>
+            </nav>
+
+            <main class="admin-content">
+                <!-- Stats Overview -->
+                <div id="statsView" class="view-panel" style="display:none;">
+                    <div class="stats-grid" id="statsGrid">
+                        <div class="stat-card">
+                            <h3>Total Leads</h3>
+                            <p id="totalLeads">0</p>
+                        </div>
+                        <div class="stat-card new">
+                            <h3>New</h3>
+                            <p id="newLeads">0</p>
+                        </div>
+                        <div class="stat-card assigned">
+                            <h3>Assigned</h3>
+                            <p id="assignedLeads">0</p>
+                        </div>
+                        <div class="stat-card completed">
+                            <h3>Completed</h3>
+                            <p id="completedLeads">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Total Providers</h3>
+                            <p id="totalProviders">0</p>
+                        </div>
+                        <div class="stat-card verified">
+                            <h3>Verified</h3>
+                            <p id="verifiedProviders">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leads View -->
+                <div id="leadsView" class="view-panel">
+                    <div class="view-header">
+                        <h2>Leads</h2>
+                        <div class="filters">
+                            <select id="leadStatusFilter">
+                                <option value="">All Status</option>
+                                <option value="NEW">New</option>
+                                <option value="ASSIGNED">Assigned</option>
+                                <option value="CONTACTED">Contacted</option>
+                                <option value="ACCEPTED">Accepted</option>
+                                <option value="COMPLETED">Completed</option>
+                                <option value="CANCELLED">Cancelled</option>
+                            </select>
+                            <button id="refreshLeadsBtn" class="refresh-btn">↻ Refresh</button>
+                        </div>
+                    </div>
+                    <div class="leads-table-container">
+                        <table class="leads-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Customer</th>
+                                    <th>Service</th>
+                                    <th>Area</th>
+                                    <th>Status</th>
+                                    <th>Assigned To</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leadsTableBody">
+                                <tr><td colspan="7" class="loading">Loading leads...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Providers View -->
+                <div id="providersView" class="view-panel" style="display:none;">
+                    <div class="view-header">
+                        <h2>Providers</h2>
+                        <button id="addProviderBtn" class="add-btn">+ Add Provider</button>
+                    </div>
+                    <div class="providers-grid" id="providersGrid">
+                        <div class="loading">Loading providers...</div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Provider Modal -->
+    <div id="providerModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2 id="modalTitle">Add Provider</h2>
+            <form id="providerForm">
+                <input type="hidden" id="providerId">
+                <div class="form-group">
+                    <label>Name *</label>
+                    <input type="text" id="providerName" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone *</label>
+                    <input type="tel" id="providerPhone" required>
+                </div>
+                <div class="form-group">
+                    <label>Primary Service</label>
+                    <select id="providerCategory">
+                        <option value="">Select Primary Service</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="providerDescription" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Services</label>
+                    <div id="providerServices" class="checkbox-group"></div>
+                </div>
+                <div class="form-group">
+                    <label>Areas</label>
+                    <div id="providerAreas" class="checkbox-group">
+                        <label class="checkbox-option"><input type="checkbox" value="Lakhisarai City"> Lakhisarai City</label>
+                        <label class="checkbox-option"><input type="checkbox" value="Barahiya"> Barahiya</label>
+                        <label class="checkbox-option"><input type="checkbox" value="Halsi"> Halsi</label>
+                        <label class="checkbox-option"><input type="checkbox" value="Other"> Other</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Verification Status</label>
+                    <select id="providerVerification">
+                        <option value="pending">Pending</option>
+                        <option value="verified">Verified</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="providerActive" checked>
+                        Active
+                    </label>
+                </div>
+                <button type="submit" class="submit-btn">Save Provider</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lead Detail Modal -->
+    <div id="leadModal" class="modal" style="display:none;">
+        <div class="modal-content lead-detail">
+            <span class="modal-close">&times;</span>
+            <h2 id="leadDetailTitle">Lead Details</h2>
+            <div id="leadDetailContent">
+                <div class="lead-info">
+                    <p><strong>Customer:</strong> <span id="leadCustomer"></span></p>
+                    <p><strong>Phone:</strong> <span id="leadPhone"></span></p>
+                    <p><strong>Service:</strong> <span id="leadService"></span></p>
+                    <p><strong>Area:</strong> <span id="leadArea"></span></p>
+                    <p><strong>Description:</strong> <span id="leadDescription"></span></p>
+                    <p><strong>Status:</strong> <span id="leadStatus"></span></p>
+                    <p><strong>Created:</strong> <span id="leadCreated"></span></p>
+                </div>
+                <div class="lead-actions">
+                    <button class="action-btn whatsapp-btn" id="leadWhatsApp">💬 WhatsApp</button>
+                    <button class="action-btn call-btn" id="leadCall">📞 Call</button>
+                    <div class="assign-section">
+                        <h4>Assign Provider</h4>
+                        <select id="leadAssignProvider">
+                            <option value="">Select Provider</option>
+                        </select>
+                        <button id="leadAssignBtn" class="assign-btn">Assign</button>
+                    </div>
+                    <div class="status-actions">
+                        <button class="status-btn" data-status="CONTACTED">Contacted</button>
+                        <button class="status-btn" data-status="ACCEPTED">Accepted</button>
+                        <button class="status-btn" data-status="COMPLETED">Completed</button>
+                        <button class="status-btn danger" data-status="CANCELLED">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
